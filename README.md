@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-[Just a kanban board](ban-seven-alpha.vercel.app)
+[Just a kanban board](https://kanban-seven-alpha.vercel.app/)
 
 ## How to run
 - install the dependencies with `yarn`
