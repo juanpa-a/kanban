@@ -5,7 +5,13 @@ import { Kanban } from "./pages/Kanban";
 
 export default function App() {
     return (
-        <Theme>
+        <Theme
+            accentColor="iris"
+            grayColor="gray"
+            panelBackground="solid"
+            scaling="100%"
+            radius="full"
+        >
             <Kanban />
         </Theme>
     );

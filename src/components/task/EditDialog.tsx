@@ -46,7 +46,6 @@ export const EditDialog = ({
                         </Text>
                         <TextField.Input
                             value={name}
-                            color="iris"
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Walk the dog"
                         />
@@ -57,7 +56,6 @@ export const EditDialog = ({
                         </Text>
                         <TextField.Input
                             value={description}
-                            color="iris"
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="45 min walk around the park"
                         />
@@ -80,7 +78,6 @@ export const EditDialog = ({
                                     description
                                 );
                             }}
-                            color="iris"
                         >
                             Save
                         </Button>

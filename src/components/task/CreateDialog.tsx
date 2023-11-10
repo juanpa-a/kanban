@@ -16,7 +16,7 @@ export const CreateDialog = ({ stage }: Props) => {
     return (
         <Dialog.Root>
             <Dialog.Trigger>
-                <Button mt="4" variant="soft" color="iris">
+                <Button mt="4" variant="soft">
                     Add task
                     <PlusCircledIcon width="18" height="18" />
                 </Button>
@@ -32,7 +32,6 @@ export const CreateDialog = ({ stage }: Props) => {
                         </Text>
                         <TextField.Input
                             value={name}
-                            color="iris"
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Walk the dog"
                         />
@@ -43,7 +42,6 @@ export const CreateDialog = ({ stage }: Props) => {
                         </Text>
                         <TextField.Input
                             value={description}
-                            color="iris"
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="45 min walk around the park"
                         />
@@ -70,7 +68,6 @@ export const CreateDialog = ({ stage }: Props) => {
                                 setName("");
                                 setDescription("");
                             }}
-                            color="iris"
                         >
                             Save
                         </Button>

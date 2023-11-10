@@ -11,7 +11,7 @@ export const CreateDialog = () => {
     return (
         <Dialog.Root>
             <Dialog.Trigger>
-                <Button mt="4" variant="solid" color="iris">
+                <Button mt="4" variant="solid">
                     Add column
                     <PlusCircledIcon width="18" height="18" />
                 </Button>
@@ -27,7 +27,6 @@ export const CreateDialog = () => {
                         </Text>
                         <TextField.Input
                             value={name}
-                            color="iris"
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Walk the dog"
                         />
@@ -42,7 +41,6 @@ export const CreateDialog = () => {
                     </Dialog.Close>
                     <Dialog.Close>
                         <Button
-                            color="iris"
                             onClick={() => {
                                 if (name) {
                                     project.stateColumns.add({
