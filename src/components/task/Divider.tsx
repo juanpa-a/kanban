@@ -25,7 +25,6 @@ export const Divider = ({ columnPosition, dividerPosition }: Props) => {
         <Box
             onDragOver={(e) => {
                 e.preventDefault();
-
                 grow(e);
             }}
             onDragLeave={(e) => {
@@ -52,7 +51,7 @@ export const Divider = ({ columnPosition, dividerPosition }: Props) => {
 
                     setTimeout(() => {
                         celebration.toggle();
-                    }, 12_000);
+                    }, 3_000);
                 }
             }}
             style={{
