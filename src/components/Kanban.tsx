@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Ref, useEffect, useRef } from "react";
 import { useProject } from "../stores/Project";
 import { ColumnDialog } from "./ColumnDialog";
+import Confetti from "react-confetti";
+import { useCelebration } from "../stores/Celebration";
 
 type ScrollableElement = {
     scrollTo: (config: unknown) => void;
@@ -14,6 +16,7 @@ export const Kanban = () => {
     const { id } = useParams();
     const scrollAreaRef = useRef<ScrollableElement>();
     const project = useProject((state) => state);
+    const celebration = useCelebration((state) => state);
 
     useEffect(() => {
         if (scrollAreaRef.current) {
@@ -25,41 +28,52 @@ export const Kanban = () => {
     }, [project.columns.length]);
 
     return (
-        <Flex
-            p="8"
-            gap="8"
-            align="start"
-            direction="column"
-            style={{ width: "80vw", minHeight: "100vh" }}
-            grow="1"
-        >
-            <Flex justify="between" width="100%" align="center">
-                <Heading as="h1" weight="medium" key={id}>
-                    {project.name}
-                </Heading>
-                <ColumnDialog />
-            </Flex>
-
-            <ScrollArea
-                ref={scrollAreaRef as Ref<HTMLDivElement>}
-                size="1"
-                type="scroll"
-                scrollbars="horizontal"
-                style={{ maxWidth: "80vw" }}
+        <>
+            <Flex
+                p="8"
+                gap="8"
+                align="start"
+                direction="column"
+                style={{ width: "80vw", minHeight: "100vh" }}
+                grow="1"
             >
-                <Flex align="start" justify="between" width="100%">
-                    {project.columns.map(({ id, name }, stage) => {
-                        return (
-                            <Column
-                                key={id}
-                                id={id}
-                                position={stage}
-                                name={name}
-                            />
-                        );
-                    })}
+                <Flex justify="between" width="100%" align="center">
+                    <Heading as="h1" weight="medium" key={id}>
+                        {project.name}
+                    </Heading>
+                    <ColumnDialog />
                 </Flex>
-            </ScrollArea>
-        </Flex>
+
+                <ScrollArea
+                    ref={scrollAreaRef as Ref<HTMLDivElement>}
+                    size="1"
+                    type="scroll"
+                    scrollbars="horizontal"
+                    style={{ maxWidth: "80vw" }}
+                >
+                    <Flex align="start" justify="between" width="100%">
+                        {project.columns.map(({ id, name }, stage) => {
+                            return (
+                                <Column
+                                    key={id}
+                                    id={id}
+                                    position={stage}
+                                    name={name}
+                                />
+                            );
+                        })}
+                    </Flex>
+                </ScrollArea>
+            </Flex>
+            {celebration.isRunning && (
+                <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    numberOfPieces={250}
+                    gravity={0.5}
+                    recycle={false}
+                />
+            )}
+        </>
     );
 };

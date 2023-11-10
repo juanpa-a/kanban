@@ -1,5 +1,6 @@
 import { Box } from "@radix-ui/themes";
 import { useProject } from "../stores/Project";
+import { useCelebration } from "../stores/Celebration";
 
 type Props = {
     columnPosition: number;
@@ -8,6 +9,7 @@ type Props = {
 
 export const Divider = ({ columnPosition, dividerPosition }: Props) => {
     const project = useProject((state) => state);
+    const celebration = useCelebration((state) => state);
 
     const grow = (e: React.DragEvent<HTMLDivElement>) => {
         e.currentTarget.style.height = "120px"; // Move down by 5 pixels
@@ -23,7 +25,7 @@ export const Divider = ({ columnPosition, dividerPosition }: Props) => {
         <Box
             onDragOver={(e) => {
                 e.preventDefault();
-                
+
                 grow(e);
             }}
             onDragLeave={(e) => {
@@ -42,6 +44,16 @@ export const Divider = ({ columnPosition, dividerPosition }: Props) => {
 
                 project.task.remove(parseInt(stage), parseInt(position));
                 project.task.insertAt(columnPosition, dividerPosition, task);
+
+                // toggle celebration when task is moved to done, or
+                // to a custom final stage
+                if (columnPosition === project.columns.length - 1) {
+                    celebration.toggle();
+
+                    setTimeout(() => {
+                      celebration.toggle();
+                    }, 12_000)
+                }
             }}
             style={{
                 height: "15px",

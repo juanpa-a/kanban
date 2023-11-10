@@ -57,16 +57,6 @@ export const Task = ({
                         {formatedDate}
                     </Text>
                     <Flex gap="3">
-                        {/* <IconButton
-                            size="1"
-                            variant="ghost"
-                            color="mint"
-                            onClick={() => {
-                                // project.task.remove(stage, position);
-                            }}
-                        >
-                            <Pencil1Icon width="18" height="18" />
-                        </IconButton> */}
                         <TaskEditDialog
                             stage={stage}
                             position={position}
