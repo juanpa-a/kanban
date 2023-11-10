@@ -51,7 +51,7 @@ export const Kanban = () => {
                     scrollbars="horizontal"
                     style={{ maxWidth: "80vw" }}
                 >
-                    <Flex align="start" justify="between" width="100%">
+                    <Flex align="start" justify="center" width="100%">
                         {project.columns.map(({ id, name }, stage) => {
                             return (
                                 <Column
