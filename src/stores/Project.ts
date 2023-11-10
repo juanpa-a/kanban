@@ -29,7 +29,12 @@ type Actions = {
             task: Task
         ) => void;
         remove: (columnPosition: number, taskPosition: number) => void;
-        updateState: () => void;
+        update: (
+            columnPosition: number,
+            taskPosition: number,
+            name: string,
+            description: string
+        ) => void;
     };
     stateColumns: {
         add: (column: TaskState) => void;
@@ -93,7 +98,20 @@ export const useProject = create<State & Actions>(
                         );
                         return updated;
                     }),
-                updateState: () => set((state) => state),
+                update: (
+                    columnPosition: number,
+                    taskPosition: number,
+                    name: string,
+                    description: string
+                ) =>
+                    set((state) => {
+                        const updated = { ...state };
+                        const task =
+                            updated.columns[columnPosition].tasks[taskPosition];
+                        task.name = name;
+                        task.description = description;
+                        return updated;
+                    }),
             },
 
             stateColumns: {

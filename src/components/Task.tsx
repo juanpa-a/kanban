@@ -4,6 +4,7 @@ import { Task as TaskType } from "../stores/Project";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { Divider } from "./Divider";
 import { useProject } from "../stores/Project";
+import { TaskEditDialog } from "./TaskEditDialog";
 
 type Props = {
     stage: number;
@@ -39,7 +40,6 @@ export const Task = ({
                     );
                 }}
                 variant="classic"
-
             >
                 <Flex gap="3" align="center" justify="between">
                     <Box>
@@ -56,7 +56,23 @@ export const Task = ({
                     <Text size="1" color="gray">
                         {formatedDate}
                     </Text>
-                    <Flex gap="1">
+                    <Flex gap="3">
+                        {/* <IconButton
+                            size="1"
+                            variant="ghost"
+                            color="mint"
+                            onClick={() => {
+                                // project.task.remove(stage, position);
+                            }}
+                        >
+                            <Pencil1Icon width="18" height="18" />
+                        </IconButton> */}
+                        <TaskEditDialog
+                            stage={stage}
+                            position={position}
+                            name={name}
+                            description={description || ""}
+                        />
                         <IconButton
                             size="1"
                             variant="ghost"
