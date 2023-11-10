@@ -5,7 +5,7 @@ import { Kanban } from "./components/Kanban";
 
 export default function App() {
     return (
-        <Theme appearance="dark">
+        <Theme>
             <Kanban />
         </Theme>
     );
