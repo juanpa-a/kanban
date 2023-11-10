@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## How to run
+- install the dependencies with `yarn`
+- start the project `yarn dev`
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
