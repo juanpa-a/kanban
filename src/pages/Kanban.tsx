@@ -29,16 +29,9 @@ export const Kanban = () => {
 
     return (
         <>
-            <Flex
-                p="8"
-                gap="8"
-                align="start"
-                direction="column"
-                style={{ width: "80vw", minHeight: "100vh" }}
-                grow="1"
-            >
+            <Flex p="2" gap="8" align="start" direction="column">
                 <Flex justify="between" width="100%" align="center">
-                    <Heading as="h1" weight="medium" key={id}>
+                    <Heading as="h1" weight="bold" key={id}>
                         {project.name}
                     </Heading>
                     <CreateDialog />
