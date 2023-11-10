@@ -1,0 +1,65 @@
+import { Flex, Heading, ScrollArea } from "@radix-ui/themes";
+import { Column } from "./Column";
+import { useParams } from "react-router-dom";
+import { Ref, useEffect, useRef } from "react";
+import { useProject } from "../stores/Project";
+import { ColumnDialog } from "./ColumnDialog";
+
+type ScrollableElement = {
+    scrollTo: (config: unknown) => void;
+    scrollWidth: number;
+};
+
+export const Kanban = () => {
+    const { id } = useParams();
+    const scrollAreaRef = useRef<ScrollableElement>();
+    const project = useProject((state) => state);
+
+    useEffect(() => {
+        if (scrollAreaRef.current) {
+            scrollAreaRef.current.scrollTo({
+                left: scrollAreaRef.current.scrollWidth,
+                behavior: "smooth",
+            });
+        }
+    }, [project.columns.length]);
+
+    return (
+        <Flex
+            p="8"
+            gap="8"
+            align="start"
+            direction="column"
+            style={{ width: "80vw", minHeight: "100vh" }}
+            grow="1"
+        >
+            <Flex justify="between" width="100%" align="center">
+                <Heading as="h1" weight="medium" key={id}>
+                    {project.name}
+                </Heading>
+                <ColumnDialog />
+            </Flex>
+
+            <ScrollArea
+                ref={scrollAreaRef as Ref<HTMLDivElement>}
+                size="1"
+                type="scroll"
+                scrollbars="horizontal"
+                style={{ maxWidth: "80vw" }}
+            >
+                <Flex align="start" justify="between" width="100%">
+                    {project.columns.map(({ id, name }, stage) => {
+                        return (
+                            <Column
+                                key={id}
+                                id={id}
+                                position={stage}
+                                name={name}
+                            />
+                        );
+                    })}
+                </Flex>
+            </ScrollArea>
+        </Flex>
+    );
+};
