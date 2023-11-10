@@ -1,9 +1,9 @@
 import { Flex, Heading, ScrollArea } from "@radix-ui/themes";
-import { Column } from "./Column";
+import { Column } from "../components/column/Column";
 import { useParams } from "react-router-dom";
 import { Ref, useEffect, useRef } from "react";
 import { useProject } from "../stores/Project";
-import { ColumnDialog } from "./ColumnDialog";
+import { CreateDialog } from "../components/column/CreateDialog";
 import Confetti from "react-confetti";
 import { useCelebration } from "../stores/Celebration";
 
@@ -41,7 +41,7 @@ export const Kanban = () => {
                     <Heading as="h1" weight="medium" key={id}>
                         {project.name}
                     </Heading>
-                    <ColumnDialog />
+                    <CreateDialog />
                 </Flex>
 
                 <ScrollArea

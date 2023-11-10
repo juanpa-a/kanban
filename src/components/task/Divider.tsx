@@ -1,6 +1,6 @@
 import { Box } from "@radix-ui/themes";
-import { useProject } from "../stores/Project";
-import { useCelebration } from "../stores/Celebration";
+import { useProject } from "../../stores/Project";
+import { useCelebration } from "../../stores/Celebration";
 
 type Props = {
     columnPosition: number;
@@ -51,8 +51,8 @@ export const Divider = ({ columnPosition, dividerPosition }: Props) => {
                     celebration.toggle();
 
                     setTimeout(() => {
-                      celebration.toggle();
-                    }, 12_000)
+                        celebration.toggle();
+                    }, 12_000);
                 }
             }}
             style={{

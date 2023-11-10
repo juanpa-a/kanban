@@ -1,10 +1,10 @@
 import { Card, Box, Text, Flex, IconButton } from "@radix-ui/themes";
-import { formatDate } from "../helpers/formating";
-import { Task as TaskType } from "../stores/Project";
+import { formatDate } from "../../helpers/formating";
+import { Task as TaskType } from "../../stores/Project";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { Divider } from "./Divider";
-import { useProject } from "../stores/Project";
-import { TaskEditDialog } from "./TaskEditDialog";
+import { useProject } from "../../stores/Project";
+import { EditDialog } from "./EditDialog";
 
 type Props = {
     stage: number;
@@ -57,7 +57,7 @@ export const Task = ({
                         {formatedDate}
                     </Text>
                     <Flex gap="3">
-                        <TaskEditDialog
+                        <EditDialog
                             stage={stage}
                             position={position}
                             name={name}

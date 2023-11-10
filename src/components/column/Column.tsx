@@ -1,13 +1,10 @@
 import { Card, Flex, IconButton, Text } from "@radix-ui/themes";
-import { Task } from "./Task";
-import {
-    DragHandleDots2Icon,
-    TrashIcon,
-} from "@radix-ui/react-icons";
-import { TaskDialog } from "./TaskDialog";
-import { useProject } from "../stores/Project";
-import { Divider } from "./Divider";
-import { ColumnDivider } from "./ColumnDivider";
+import { Task } from "../task/Task";
+import { DragHandleDots2Icon, TrashIcon } from "@radix-ui/react-icons";
+import { CreateDialog as CreateTaskDialog } from "../task/CreateDialog";
+import { useProject } from "../../stores/Project";
+import { Divider } from "../task/Divider";
+import { Divider as ColumnDivider } from "./Divider";
 
 type Props = {
     id: number;
@@ -64,7 +61,7 @@ export const Column = ({ id, name, position }: Props) => {
                         dividerPosition={tasks.length}
                     />
 
-                    <TaskDialog stage={position} />
+                    <CreateTaskDialog stage={position} />
                 </Flex>
             </Card>
         </>

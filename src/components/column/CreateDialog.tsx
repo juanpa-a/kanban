@@ -1,9 +1,9 @@
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
-import { useProject } from "../stores/Project";
+import { useProject } from "../../stores/Project";
 import { useState } from "react";
 
-export const ColumnDialog = () => {
+export const CreateDialog = () => {
     const project = useProject((state) => state);
 
     const [name, setName] = useState("");

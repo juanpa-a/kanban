@@ -1,11 +1,11 @@
 import { Box } from "@radix-ui/themes";
-import { useProject } from "../stores/Project";
+import { useProject } from "../../stores/Project";
 
 type Props = {
     position: number;
 };
 
-export const ColumnDivider = ({ position }: Props) => {
+export const Divider = ({ position }: Props) => {
     const project = useProject((state) => state);
 
     const shrink = (e: React.DragEvent<HTMLDivElement>) => {

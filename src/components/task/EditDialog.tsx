@@ -7,7 +7,7 @@ import {
     Text,
     TextField,
 } from "@radix-ui/themes";
-import { useProject } from "../stores/Project";
+import { useProject } from "../../stores/Project";
 import { useState } from "react";
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
     description: string;
 };
 
-export const TaskEditDialog = ({
+export const EditDialog = ({
     stage,
     position,
     name: currName,
